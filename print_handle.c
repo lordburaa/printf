@@ -1,9 +1,19 @@
 #include "main.h"
-
-int handle_print(const  char *fmt, int *ind, va_list list,
-		char buffer[], int flags, int width, int precison, int size)
+/**
+ * handle_print - prints arguments
+ * @fmt: format
+ * @ind: ind
+ * @flag: flag
+ * @wdth: width
+ * @size: size
+ * @precision: precision
+ * @lists: lists
+ * Return:  1 or 2
+ */
+int handle_print(const  char *fmt, int *ind, va_list lists,
+		char buffer[], int flags, int width, int precision, int sized)
 {
-	int i, unknown_lne = 0, printed_chars = -1;
+	int j, unknown_ln = 0, display_chars = -1;
 	fmt_t fmt_types[] = {
 		{'c', print_char}, {'s', print_string}, {'%', print_percent},
 		{'i', print_int}, {'d', print_int}, {'b', print_binary},
@@ -11,16 +21,16 @@ int handle_print(const  char *fmt, int *ind, va_list list,
 		{'x', print_hexa_upper}, {'p', print_int}, {'S', print_non_printable},
 		{'r', print_reverse}, {'R', print_rot13string}, {'\0', NULL}
 	};
-	for (i = 0; fmt_types[i].fmt != '\0'; i++)
-		if (fmt[*ind] == fmt_types[i].fmt)
-			return (fmt_types[i].fn(list, buffer, fkags, width, precision, size));
-		if (fmt_types[i].fmt == '\0')
-		{
-			if (fmt[*ind] == '\0')
+	for (j = 0; fmt_types[j].fmt != '\0'; j++)
+		if (fmt[*ind] == fmt_types[j].fmt)
+			return (fmt_types[i].fn(lists, buffer, flag, wdth, precision, sized));
+	if (fmt_types[j].fmt == '\0')
+	{
+		if (fmt[*ind] == '\0')
 			return (-1);
-			unknow_len += write(1, "%%", 1);
+			unknown_ln += write(1, "%%", 1);
 			if (fmt[*ind - 1] == ' ')
-				unknow += write(1, " ", 1);
+				unknown_ln += write(1, " ", 1);
 			else if (width)
 			{
 				--(*ind);
@@ -30,8 +40,8 @@ int handle_print(const  char *fmt, int *ind, va_list list,
 					--(*ind);
 				return (1);
 			}
-			unknow_len += write(1, &fmt[*ind], 1);
-			return (unknow_len);
+			unknown_ln += write(1, &fmt[*ind], 1);
+			return (unknown_ln);
 		}
-		return (printed_chars);
+		return (display_chars);
 }

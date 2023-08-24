@@ -1,7 +1,7 @@
 #include "main.h"
-/** 
- * print_poninter - prints the calie of
- * @list: lisst
+/**
+ * print_pointer - prints the calie of
+ * @lists: lisst
  * @buffer: buffer
  * @flag: flag
  * @wdth: width
@@ -9,14 +9,15 @@
  * @sized: sized
  * Return: number of chars
  */
-int print_pointer(va_list list, char buffer[], int flag, int wdth, int precison, int sized)
+int print_pointer(va_list lists, char buffer[], int flag,
+		int wdth, int precision, int sized)
 {
 	char x_c = 0, padd = ' ';
 	int ind = BUFF_SIZE - 2, leg = 2, padd_start = 1;
 
 	unsigned long num_ad;
-	char map_tp[] = "0123456789abcdef";
-	void *add = va_arg(list, void *);
+	char m_to[] = "0123456789abcdef";
+	void *add = va_arg(lists, void *);
 
 	UNUSED(wdth);
 	UNUSED(sized);
@@ -24,12 +25,12 @@ int print_pointer(va_list list, char buffer[], int flag, int wdth, int precison,
 	if (add == NULL)
 		return (write(1, "(nil)", 5));
 		buffer[BUFF_SIZE - 1] = '\0';
-		UNUSED(precison);
+		UNUSED(precision);
 		num_ad = (unsigned long)add;
 
 		while (num_ad > 0)
 		{
-			buffer[ind--] = map_to[num_ad % 16];
+			buffer[ind--] = m_to[num_ad % 16];
 			num_ad /= 16;
 			leg++;
 		}
@@ -41,77 +42,80 @@ int print_pointer(va_list list, char buffer[], int flag, int wdth, int precison,
 			x_c = ' ', leg++;
 		ind++;
 
-		return (write_pointer(buffer, ind , leg, wdth, flag, padd, x_c, padd_start));
-	
+		return (write_pointer(buffer, ind, leg, wdth, flag, padd, x_c, padd_start));
 }
-/** 
- * print_non_printable - prints ascii 
- * @types: list of argumetns
+/**
+ * print_non_printable - prints ascii
+ * @lists: list of argumetns
  * @buffer: buffer array to handle print
- * @flags: calculate
- * @width: widtth
- * @precison: precion
- * @size : siz of specifier
+ * @flag: calculate
+ * @wdth: widtth
+ * @precision: precion
+ * @sized : siz of specifier
  * Return: number
  */
-int print_non_printable(va_list list, char buffer[], int flag, int wdth, int precison , int size)
+int print_non_printable(va_list lists, char buffer[], int flag,
+		int wdth, int precision, int sized)
 {
 	int i = 0, offset = 0;
-	char *str = va_arg(list, char *);
+	char *str = va_arg(lists, char *);
+
 	UNUSED(flag);
 	UNUSED(wdth);
-	UNUSED(precison);
+	UNUSED(precision);
 	UNUSED(sized);
 	if (str == NULL)
 		return (write(1, "(null)", 6));
-				while (str[i] != '\0')
-				{
-				
-				if (is_printable(str[i]))
-				buffer[i + offset] = str[i];
-					
-	else
-		offset += append_hexa_code(str[i], buffer, i + offset);
-	i++;
-
-}
-buffer[i + offset] = '\0';
-return (write(1, buffer, i + offset));
+	while (str[i] != '\0')
+	{
+		if (is_printable(str[i]))
+			buffer[i + offset] = str[i];
+		else
+			offset += append_hexa_code(str[i], buffer, i + offset);
+		i++;
+	}
+	buffer[i + offset] = '\0';
+	return (write(1, buffer, i + offset));
 }
 /**
  * print_reverse - prints reverse string
- * @types: lsit of arguments
+ * @lists: lsit of arguments
  * @buffer: buffer
+ * @flag: flag
+ * @wdth: width
+ * @precision: precision
+ * @sized: size
+ * Return: 1
  */
-int print_reverse(va_list list, char buffer[], int flag, int wdth, int precsion, int sized)
+int print_reverse(va_list lists, char buffer[], int flag,
+		int wdth, int precision, int sized)
 {
 	char *str;
 	int j, cnt == 0;
+
 	UNUSED(buffer);
 	UNUSED(flag);
 	UNUSED(wdth);
 	UNUSED(sized);
-	str = va_arg(list, char *);
-	 if (str == NULL);
-	 {
-		 UNUSED(precision);
-		 str = ")Null(";
-	 }
-	 for (int j = 0, str[j]; j++)
+	str = va_arg(lists, char *);
+	if (str == NULL)
+	{
+		UNUSED(precision);
+		str = ")Null(";
+	}
+	for (int j = 0, str[j]; j++)
+		for (j = j - 1; j >= 0; j--)
+		{
+			char t = str[j];
 
-		 for (j = j - 1; j >= 0; j--)
-		 {
-			 char t = str[j];
-
-			 write(1, &t, 1);
-			 cnt++;
-		 }
-	 return (cnt);
-
+			write(1, &t, 1);
+			cnt++;
+		}
+	return (cnt);
 }
 /**
  * print_rot13string - prints
- * @list: list
+ * @lists: list
  * @wdth: width
  * @precision: precision
  * @sized: size
@@ -119,7 +123,8 @@ int print_reverse(va_list list, char buffer[], int flag, int wdth, int precsion,
  * @flag: activate
  * Return: number
  */
-int print_rot13string(va_list list, char buffer[], int flag, int wdth, int precision, int sized)
+int print_rot13string(va_list lists, char buffer[], int flag,
+		int wdth, int precision, int sized)
 {
 	char u;
 	char *str;
@@ -128,7 +133,7 @@ int print_rot13string(va_list list, char buffer[], int flag, int wdth, int preci
 	char i[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsuvwxyz";
 	char o[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	str = va_arg(types, char *);
+	str = va_arg(lists, char *);
 	UNUSED(buffer);
 	UNUSSED(flag);
 	UNUSED(wdth);
@@ -149,7 +154,7 @@ int print_rot13string(va_list list, char buffer[], int flag, int wdth, int preci
 				break;
 			}
 		}
-		if (!i[j])
+		if (!i[jj])
 		{
 			u = str[ii];
 			write(1, &u, 1);
