@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MAIN_b
+#define MAIN_b
 
 #include <unistd.h>
 #include <stdarg.h>
@@ -57,7 +57,7 @@ int print_pointer(va_list lists, char buffer[], int flag, int wdth, int precisio
 int get_flags(const char *format, int *k);
 int get_width(const char *format, int *k, va_list lists);
 int get_precision(const char *format, int *k, va_list lists);
-int get_size(const char *format, in *k);
+int get_size(const char *format, int *k);
 
 
 int print_reverse(va_list lists, char buffer[], int flag, int wdth, int precision, int sized);

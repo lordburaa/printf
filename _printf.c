@@ -7,7 +7,7 @@ void print_buffer(char buffer[], int *buff_ind);
   */
 int _printf(const char *format, ...)
 {
-	int i, display = 0, display_chars = 0;
+	int i, printed = 0, printed_chars = 0;
 	int flag, wdth, precision, sized, buff_ind = 0;
 	va_list lists;
 	char buffer[BUFF_SIZE];
@@ -35,25 +35,25 @@ int _printf(const char *format, ...)
 			wdth = get_width(format, &i, lists);
 			sized = get_size(format, &i);
 			++i;
-			display = handle_print(format, &i, lists, buffer,
+			printed = handle_print(format, &i, lists, buffer,
 					flag, wdth, precision, sized);
-			if (display == -1)
+			if (printed == -1)
 				return (-1);
-			display_chars += display;
+			printed_chars += printed;
 		}
 	}
 	print_buffer(buffer, &buff_ind);
 	va_end(lists);
-	return (display_chars);
+	return (printed_chars);
 }
 /**
  * print_buffer - printd the content of the buffer if exist
  * @buffer: array char
  * @buff_indx: index
  */
-void print_buffer(char buffer[], int *buff_indx)
+void print_buffer(char buffer[], int *buff_ind)
 {
-	if (*buff_indx > 0)
-		write(1, &buffer[0], *buff_indx);
-	*buff_indx = 0;
+	if (*buff_ind > 0)
+		write(1, &buffer[0], *buff_ind);
+	*buff_ind = 0;
 }
