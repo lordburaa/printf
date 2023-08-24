@@ -61,7 +61,7 @@ int print_string(va_list lists, char buffer[], int flag,
 		else
 		{
 			for (i = wdth - leg; i > 0; i--)
-				write(1, " ". 1);
+				write(1, " ", 1);
 			write(1, &str[0], leg);
 			return (wdth);
 		}
@@ -78,7 +78,7 @@ int print_string(va_list lists, char buffer[], int flag,
   * @sized: size specifier
   * Return: number of chars printed
   */
-int print_pT(va_list lists, char buffer[], int flag,
+int print_percent(va_list lists, char buffer[], int flag,
 		 int wdth, int precision, int sized)
 {
 		UNUSED(lists);
@@ -125,7 +125,7 @@ int print_int(va_list lists, char buffer[], int flag,
 	}
 	i++;
 
-	return (write_number(is_negative, i, buffer, flags, width, precison, sized));
+	return (write_number(is_negative, i, buffer, flag, wdth, precision, sized));
 }
 /**
  * print_binary - prints unsinged number

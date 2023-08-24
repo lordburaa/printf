@@ -37,7 +37,7 @@ struct fmt
  */
 typedef struct fmt fmt_t;
 int _printf(const char *format, ...);
-int handle_printf(consr char *fmt, int *k, va_list lists,
+int handle_print(const char *fmt, int *k, va_list lists,
 		char buffer[], int flag, int wdth, int precision, int sized);
 
 int print_char(va_list lists, char buffer[], int flag, int wdth, int precision, int sized);
@@ -70,9 +70,9 @@ int write_pointer(char buffer[], int ind, int leg, int wdth, int flag, char padd
 
 int write_unsgnd(int is_negative, int ind, char buffer[], int flag, int wdth, int precision, int sized);
 
-int is_printable (char);
+int is_printable(char);
 int append_hexa_code(char, char[], int);
 int is_digit(char);
-long int convet_size_number(long int num, int sized);
+long int convert_size_number(long int num, int sized);
 long int convert_size_unsgnd(unsigned long int num, int sized);
 #endif

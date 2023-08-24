@@ -23,13 +23,12 @@ int append_hexa_code(char ascii_code, char buffer[], int i)
 
 	if (ascii_code < 0)
 		ascii_code *= -1;
-	buffe[i++] = '\\';
+	buffer[i++] = '\\';
 	buffer[i++] = 'x';
 
 	buffer[i++] = m_to[ascii_code / 16];
 	buffer[i] = map_to[ascii_code % 16];
 	return (3);
-
 }
 /**
  * is_digit - verifies if a char is a digit
@@ -41,7 +40,6 @@ int is_digit(char c)
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
-
 }
 /**
  * convert_size_number -cats a number to the specifies size
@@ -51,23 +49,23 @@ int is_digit(char c)
  */
 long int convert_size_number(long int num, int sized)
 {
-	if (size == S_LONG)
+	if (sized == S_LONG)
 		return (num);
-	else if (size == S_SHORT)
+	else if (sized == S_SHORT)
 		return ((short)num);
 	return ((int)num);
 }
 /**
- * convert_size_unsngd - casts number to specigies size
+ * convert_size_unsgnd - casts number to specigies size
  * @num : numebr indicarrion tupe to be ated
  * @sized: types to be casted
  * Return: value
  */
-long int convert_size_unsngd(unsigned long int num, int sized)
+long int convert_size_unsgnd(unsigned long int num, int sized)
 {
-	if (size == S_LONG)
+	if (sized == S_LONG)
 		return (num);
-	else if (size == S_SHORT)
+	else if (sized == S_SHORT)
 		return ((unsigned short)num);
 	return ((unsigned int)num);
 }

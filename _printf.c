@@ -1,5 +1,5 @@
 #include "main.h"
-void print_buffer(char buffer[], int *buff_indx);
+void print_buffer(char buffer[], int *buff_ind);
 /**
   * _printf - print function
   * @format: format.
@@ -8,7 +8,7 @@ void print_buffer(char buffer[], int *buff_indx);
 int _printf(const char *format, ...)
 {
 	int i, display = 0, display_chars = 0;
-	int flag, wdth, precision, sized, buff_indx = 0;
+	int flag, wdth, precision, sized, buff_ind = 0;
 	va_list lists;
 	char buffer[BUFF_SIZE];
 
@@ -21,35 +21,35 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			buffer[buff_indx++] = format[i];
-			if (buff_indx == BUFF_SIZE)
-				printf_buffer(buffer, &buff_indx);
+			buffer[buff_ind++] = format[i];
+			if (buff_ind == BUFF_SIZE)
+				print_buffer(buffer, &buff_ind);
 
 			display_chars++;
 		}
 		else
 		{
-			print_buffer(buffer, &buff_indx);
+			print_buffer(buffer, &buff_ind);
 			flag = get_flags(format, &i);
 			precision = get_precision(format, &i, lists);
 			wdth = get_width(format, &i, lists);
 			sized = get_size(format, &i);
 			++i;
-			display = handle_print(format, &i, lists, buffer, flag, wdth, precision, sized);
+			display = handle_print(format, &i, lists, buffer,
+					flag, wdth, precision, sized);
 			if (display == -1)
 				return (-1);
-			display_chars += diaplay;
+			display_chars += display;
 		}
 	}
-	print_buffer(buffer, &buff_indx);
+	print_buffer(buffer, &buff_ind);
 	va_end(lists);
 	return (display_chars);
-
 }
 /**
  * print_buffer - printd the content of the buffer if exist
  * @buffer: array char
- * @buff_ind: index 
+ * @buff_indx: index
  */
 void print_buffer(char buffer[], int *buff_indx)
 {

@@ -31,7 +31,7 @@ int handle_print(const  char *fmt, int *ind, va_list lists,
 			unknown_ln += write(1, "%%", 1);
 			if (fmt[*ind - 1] == ' ')
 				unknown_ln += write(1, " ", 1);
-			else if (width)
+			else if (wdth)
 			{
 				--(*ind);
 				while (fmt[*ind] != ' ' && fmt[*ind] != '%')

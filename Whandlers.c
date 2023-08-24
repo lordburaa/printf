@@ -138,7 +138,7 @@ int write_unsgnd(int is_negative, int ind, char buffer[],
 
 	UNUSED(is_negative);
 	UNUSED(size);
-	if (precison == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0')
+	if (precision == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0')
 		return (0);
 	if (precision > 0 && precision < leg)
 		padd = ' ';
@@ -189,11 +189,11 @@ int write_pointer(char buffer[], int ind, int leg, int wdth,
 		for (i = 3; i < wdth - leg + 3; i++)
 			buffer[i] = padd;
 		buffer[i] = '\0';
-		if (falg & F_MINUS && padd == ' ')
+		if (flag & F_MINUS && padd == ' ')
 		{
 			buffer[--ind] = 'x';
 			buffer[--ind] = '0';
-			if (extra_c)
+			if (x_c)
 				buffer[--ind] = extra_c;
 			return (write(1, &buffer[ind], leg) + write(1, &buffer[3], i - 3));
 		}

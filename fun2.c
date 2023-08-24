@@ -14,8 +14,8 @@ int print_pointer(va_list lists, char buffer[], int flag,
 {
 	char x_c = 0, padd = ' ';
 	int ind = BUFF_SIZE - 2, leg = 2, padd_start = 1;
+	unsigned long num_add;
 
-	unsigned long num_ad;
 	char m_to[] = "0123456789abcdef";
 	void *add = va_arg(lists, void *);
 
@@ -26,12 +26,12 @@ int print_pointer(va_list lists, char buffer[], int flag,
 		return (write(1, "(nil)", 5));
 		buffer[BUFF_SIZE - 1] = '\0';
 		UNUSED(precision);
-		num_ad = (unsigned long)add;
+		num_add = (unsigned long)add;
 
-		while (num_ad > 0)
+		while (num_add > 0)
 		{
-			buffer[ind--] = m_to[num_ad % 16];
-			num_ad /= 16;
+			buffer[ind--] = m_to[num_add % 16];
+			num_add /= 16;
 			leg++;
 		}
 		if ((flag & F_ZERO) && !(flag & F_MINUS))
@@ -103,14 +103,15 @@ int print_reverse(va_list lists, char buffer[], int flag,
 		UNUSED(precision);
 		str = ")Null(";
 	}
-	for (int j = 0, str[j]; j++)
-		for (j = j - 1; j >= 0; j--)
-		{
-			char t = str[j];
+	for (j = 0, str[j]; j++)
+		;
+	for (j = j - 1; j >= 0; j--)
+	{
+		char t = str[j];
 
-			write(1, &t, 1);
-			cnt++;
-		}
+		write(1, &t, 1);
+		cnt++;
+	}
 	return (cnt);
 }
 /**
@@ -144,9 +145,9 @@ int print_rot13string(va_list lists, char buffer[], int flag,
 		str = "(AHYY)";
 	for (ii = 0; str[ii]; ii++)
 	{
-		for (jj = 0; in[jj]; jj++)
+		for (jj = 0; i[jj]; jj++)
 		{
-			if (in[jj] == str[ii])
+			if (i[jj] == str[ii])
 			{
 				u = o[jj];
 				write(1, &u, 1);

@@ -27,7 +27,7 @@ int print_unsigned(va_list lists, char buffer[], int flag,
 		num /= 10;
 	}
 	i++;
-	return (write_unsgned(0, i, buffer, flag, wdth, precision, sized));
+	return (write_unsgnd(0, i, buffer, flag, wdth, precision, sized));
 }
 /**
  * print_octal - prints an unsined
@@ -44,7 +44,7 @@ int print_octal(va_list lists, char buffer[], int flag,
 {
 	int i = BUFF_SIZE - 2;
 	unsigned long int num = va_arg(lists, unsigned long int);
-	unsigned long int int_num = num;
+	unsigned long int init_num = num;
 
 	UNUSED(wdth);
 	num = convert_size_unsgnd(num, sized);
@@ -53,7 +53,7 @@ int print_octal(va_list lists, char buffer[], int flag,
 	buffer[BUFF_SIZE - 1] = '\0';
 	while (num > 0)
 	{
-		buffer[i--] = (num % s) + '0';
+		buffer[i--] = (num % 8) + '0';
 		num /=  8;
 	}
 	if (flag & F_HASH && int_num != 0)
@@ -75,7 +75,7 @@ int print_octal(va_list lists, char buffer[], int flag,
 int print_hexadecimal(va_list lists, char buffer[], int flag,
 		int wdth, int precision, int sized)
 {
-	return (print_hexa(lists, "0123456789abcdef", buffer, falg,
+	return (print_hexa(lists, "0123456789abcdef", buffer, flag,
 				'x', wdth, precision, sized));
 }
 /**
@@ -106,14 +106,14 @@ int print_hexa_upper(va_list lists, char buffer[], int flag,
  * @fg_ch: calclul
  * Return: num
  */
-int print_hexa(va_list lists, char m_to, char buffer[],
+int print_hexa(va_list lists, char m_to[], char buffer[],
 		int flag, char fg_ch, int wdth, int precision, int sized)
 {
 	int j = BUFF_SIZE - 2;
 	unsigned long int num = va_arg(lists, unsigned long int);
 	unsigned long int init_num = num;
 
-	UNSUSED(wdth);
+	UNUSED(wdth);
 
 	num = convert_size_unsgnd(num, sized);
 
