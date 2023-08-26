@@ -1,6 +1,5 @@
 #include "main.h"
 void print_buffer(char buffer[], int *buff_ind);
-int _printf(const char *format, ...);
 /**
   * _printf - print function
   * @format: format.
@@ -26,7 +25,7 @@ int _printf(const char *format, ...)
 			if (buff_ind == BUFF_SIZE)
 				print_buffer(buffer, &buff_ind);
 
-			display_chars++;
+			printed_chars++;
 		}
 		else
 		{

@@ -24,22 +24,24 @@ int print_pointer(va_list lists, char buffer[], int flag,
 
 	if (add == NULL)
 		return (write(1, "(nil)", 5));
-		buffer[BUFF_SIZE - 1] = '\0';
-		UNUSED(precision);
-		num_add = (unsigned long)add;
+		
+	buffer[BUFF_SIZE - 1] = '\0';
+	UNUSED(precision);
 
-		while (num_add > 0)
-		{
-			buffer[ind--] = m_to[num_add % 16];
-			num_add /= 16;
-			leg++;
-		}
-		if ((flag & F_ZERO) && !(flag & F_MINUS))
-			padd = '0';
-		if (flag & F_PLUS)
-			x_c = '+', leg++;
-		else if (flag & F_SPACE)
-			x_c = ' ', leg++;
+	num_add = (unsigned long)add;
+
+	while (num_add > 0)
+	{
+		buffer[ind--] = m_to[num_add % 16];
+		num_add /= 16;
+		leg++;
+	}
+	if ((flag & F_ZERO) && !(flag & F_MINUS))
+		padd = '0';
+	if (flag & F_PLUS)
+		x_c = '+', leg++;
+	else if (flag & F_SPACE)
+		x_c = ' ', leg++;
 		ind++;
 
 		return (write_pointer(buffer, ind, leg, wdth, flag, padd, x_c, padd_start));
@@ -159,7 +161,6 @@ int print_rot13string(va_list lists, char buffer[], int flag,
 		{
 			u = str[ii];
 			write(1, &u, 1);
-
 			cnt++;
 		}
 	}

@@ -34,7 +34,7 @@ int print_string(va_list lists, char buffer[], int flag,
 
 	UNUSED(buffer);
 	UNUSED(flag);
-	UNSUED(wdth);
+	UNUSED(wdth);
 	UNUSED(precision);
 	UNUSED(sized);
 	if (str == NULL)
