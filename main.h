@@ -30,10 +30,9 @@ struct fmt
 	int (*fn)(va_list, char[], int, int, int, int);
 };
 /**
- * typedef struct fmt 
+ * typedef struct fmt
  * @fmt: the format
- * @fmt_t:
- functon 
+ * @fmt_t: functon 
  */
 typedef struct fmt fmt_t;
 int _printf(const char *format, ...);
