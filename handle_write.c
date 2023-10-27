@@ -1,4 +1,3 @@
-#include <stido.h>
 #include "main.h"
 /**
  ** handle_wchar - prints a string

@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 			prnt = handle_print(format, &i, list);
 			if (prnt == -1)
 				return (-1);
-			out_chars += print;
+			out_chars += prnt;
 		}
 	}
 	va_end(list);

@@ -1,10 +1,11 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * print_char - print char
  * @types: list of argument
  * Return: list of arimgent
  */
-int print_char(va_list types, char buffer[])
+int print_char(va_list types)
 {
 	char c = va_arg(types, int);
 	return (handle_wchar(c));
@@ -32,5 +33,5 @@ int print_string(va_list types)
 int print_percent(va_list types)
 {
 	UNUSED(types);
-	return (write(1, "%%", 1));
+	return (write(1, "%%" , 1));
 }
