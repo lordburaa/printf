@@ -20,6 +20,7 @@ int handle_print(const char *format, int *index, va_list list)
 	{
 		if (fmt[*index] == '\0')
 			return (-1);
+		len_unknow += write(1, "%%", 1);
 		if(format[*index - 1] == ' ')
 			len_unknow += write(1, " ", 1);
 		len_unknow += write(1, &format[*index], 1);
