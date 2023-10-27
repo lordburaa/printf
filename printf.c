@@ -1,10 +1,14 @@
 #include "main.h"
-
+/**
+ * _printf - printf function
+ * @format: format
+ * Return: printed chars
+ */
 int _printf(const char *format, ...)
 {
 	va_list list;
 	int i =0;
-	int print = 0;
+	int prnt = 0;
 	int out_chars = 0;
 
 	if (format == NULL)
