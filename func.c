@@ -20,7 +20,11 @@ int print_string(va_list types)
 	int leng = 0;
 	char *ptr = va_arg(types, char *);
 	
-	while (ptr[leng] != '\0')
+	 if (ptr == NULL)
+	 {
+		 ptr = "(null)";
+	 }
+	 while (ptr[leng] != '\0')
 		leng++;
 
 	return (write(1, ptr, leng));
