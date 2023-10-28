@@ -1,7 +1,8 @@
 #include "main.h"
 /**
- ** handle_wchar - prints a string
+ * handle_wchar - prints a string
  * @c: char types
+ * @buffer: buffer
  * Return: number of char  printed
  */
 int handle_wchar(char c, char buffer[])
