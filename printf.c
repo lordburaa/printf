@@ -7,9 +7,10 @@
 int _printf(const char *format, ...)
 {
 	va_list list;
-	int i =0;
+	int i;
 	int prnt = 0;
 	int out_chars = 0;
+	char buffer[BUFF_SIZE];
 
 	if (format == NULL)
 		return (-1);
@@ -23,7 +24,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			++i;
-			prnt = handle_print(format, &i, list);
+			prnt = handle_print(format, &i, list, buffer);
 			if (prnt == -1)
 				return (-1);
 			out_chars += prnt;
