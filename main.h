@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#define BUFF_SIZE 1000
+#define BUFF_SIZE 1024
 #define UNUSED(x) (void)(x)
 /********** STRUTRE *******/
 
