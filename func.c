@@ -24,8 +24,7 @@ int print_string(va_list types, char buffer[], int *buff_ind)
 	int leng = 0;
 	char *ptr = va_arg(types, char *);
 
-	UNUSED(buff_ind);
-	UNUSED(buffer);
+	print_buffer(buffer, buff_ind);
 	if (ptr == NULL)
 	{
 		ptr = "(null)";
