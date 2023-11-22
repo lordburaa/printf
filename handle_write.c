@@ -18,8 +18,9 @@ int handle_wchar(char c)
 int write_number(int is_negative, int ind, char buffer[])
 {
 	int length = BUFF_SIZE - ind - 1;
-
-	return (write_num(ind, buffer));
+	
+	UNUSED(is_negative);
+	return (write_num(ind, buffer, length));
 }
 /**
  * write_num - write number 

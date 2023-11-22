@@ -28,12 +28,13 @@ void print_buffer(char buffer[], int *buff_ind);
 int print_char(va_list types, char buffer[], int *buff_ind);
 int print_string(va_list types, char buffer[], int *buff_ind);
 int print_percent(va_list types, char buffer[], int *buff_ind);
-
+int print_int(va_list types, char buffer[], int *buff_ind);
 
 
 /****************WRITE HANDLE ******************/
 int handle_wchar(char c);
-
+int write_number(int is_negative, int ind, char buffer[]);
+int write_num(int ind, char buffer[], int length);
 
 
 /** HABDLE PRINT **/
