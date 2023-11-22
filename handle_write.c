@@ -14,3 +14,22 @@ int handle_wchar(char c)
 	buffer[i] = '\0';
 	return (write(1, &buffer[0], 1));
 }
+
+int write_number(int is_negative, int ind, char buffer[])
+{
+	int length = BUFF_SIZE - ind - 1;
+
+	return (write_num(ind, buffer));
+}
+/**
+ * write_num - write number 
+ * @ind: index
+ * @buffer: buffer to check
+ * @length: length to read from the buffer
+ * Return: number of the string writen
+ */
+int write_num(int ind, char buffer[], int length)
+{
+
+	return(write(1, &buffer[ind], length));
+}

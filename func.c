@@ -48,3 +48,26 @@ int print_percent(va_list types, char buffer[], int *buff_ind)
 	print_buffer(buffer, buff_ind);
 	return (write(1, "%%", 1));
 }
+/**
+ * printf_int - print integer
+ */
+int print_int(va_list types, char buffer[])
+{
+	int is_negative = 0;
+	int i = BUFF_SIZE - 2;
+
+	int n = va_arg(types, int);
+
+	if (n < 0)
+	{
+		num = (unsigned int)((-1) * n);
+		is_negative = 1;
+	}
+	while (num > 0)
+	{
+		buffer[i--] = (num % 10) + '0';
+		num /= 10;
+	}
+	i++;
+	return (write_number(is_engaive, i, buffer));
+}
