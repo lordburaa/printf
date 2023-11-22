@@ -5,8 +5,9 @@
  * @buffer: buffer
  * Return: number of char  printed
  */
-int handle_wchar(char c, char buffer[])
+int handle_wchar(char c)
 {
+	char buffer[2];
 	int i = 0;
 
 	buffer[i] = c;

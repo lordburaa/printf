@@ -10,8 +10,8 @@ int print_char(va_list types, char buffer[], int *buff_ind)
 {
 	char c = va_arg(types, int);
 
-	UNUSED(buff_ind);
-	return (handle_wchar(c, buffer));
+	print_buffer(buffer, buff_ind);
+	return (handle_wchar(c));
 }
 /**
  * print_string - print string

@@ -10,6 +10,7 @@
 int main(void)
 {
 /*	int len;
+	int len;
 	int len2;
 	unsigned int ui;
 
@@ -27,9 +28,9 @@ int main(void)
 	printf("Unsigned octal:[%o]\n", ui);
 	_printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
 	printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-	_printf("Character:[%c]\n", 'H');
+*/	_printf("Character:[%c]\n", 'H');
 	printf("Character:[%c]\n", 'H');
-	 _printf("String:[%s]\n", "I am a string !");
+/*	 _printf("String:[%s]\n", "I am a string !");
 	printf("String:[%s]\n", "I am a string !");
 	_printf("Address:[%p]\n", addr);
 	printf("Address:[%p]\n", addr);
@@ -40,6 +41,6 @@ int main(void)
 	_printf("Unknown:[%r]\n");
 	printf("Unknown:[%r]\n");
 */
-	_printf("hello %% ther i ma the master\n");
+	_printf("%%master");
 	return (0);
 }

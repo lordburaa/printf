@@ -32,7 +32,7 @@ int print_percent(va_list types, char buffer[], int *buff_ind);
 
 
 /****************WRITE HANDLE ******************/
-int handle_wchar(char c, char buffer[]);
+int handle_wchar(char c);
 
 
 
