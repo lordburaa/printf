@@ -2,7 +2,6 @@
 /**
  * handle_wchar - prints a string
  * @c: char types
- * @buffer: buffer
  * Return: number of char  printed
  */
 int handle_wchar(char c)

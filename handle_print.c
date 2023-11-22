@@ -5,9 +5,11 @@
  * @index: index
  * @list: argumet list
  * @buffer: buffer
+ * @buff_ind: buffer ind
  * Return: number of byetes writen
  */
-int handle_print(const char *format, int *index, va_list list, char buffer[], int *buff_ind)
+int handle_print(const char *format, int *index, va_list list,
+		char buffer[], int *buff_ind)
 {
 	int len_unknow = 0, i;
 	int printed_chars = -1;

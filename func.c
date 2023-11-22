@@ -4,6 +4,7 @@
  * print_char - print char
  * @types: list of argument
  * @buffer: buffer
+ * @buff_ind: buffer index
  * Return: list of arimgent
  */
 int print_char(va_list types, char buffer[], int *buff_ind)
@@ -17,6 +18,7 @@ int print_char(va_list types, char buffer[], int *buff_ind)
  * print_string - print string
  * @types: list of argument
  * @buffer: buffer
+ * @buff_ind: buffer ind
  * Return: nubmer of string
  */
 int print_string(va_list types, char buffer[], int *buff_ind)
@@ -37,6 +39,7 @@ int print_string(va_list types, char buffer[], int *buff_ind)
  * print_percent - prints pecent sign
  * @types: list of argument
  * @buffer: buffer
+ * @buff_ind: buffer ind
  * Return: number of hcar printed
  */
 int print_percent(va_list types, char buffer[], int *buff_ind)
