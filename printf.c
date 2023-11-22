@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			++i;
-			prnt = handle_print(format, &i, list, buffer);
+			prnt = handle_print(format, &i, list, buffer, &buff_ind);
 			if (prnt == -1)
 				return (-1);
 			out_chars += prnt;

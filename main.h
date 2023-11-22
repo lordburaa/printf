@@ -15,7 +15,7 @@
 
 typedef struct {
 	char format;
-	int (*ptr)(va_list list, char buffer[]);
+	int (*ptr)(va_list list, char buffer[], int *buff_ind);
 } format_t;
 
 
@@ -25,9 +25,9 @@ void print_buffer(char buffer[], int *buff_ind);
 
 
 /**** PRINT CHAR ******/
-int print_char(va_list types, char buffer[]);
-int print_string(va_list types, char buffer[]);
-int print_percent(va_list types, char buffer[]);
+int print_char(va_list types, char buffer[], int *buff_ind);
+int print_string(va_list types, char buffer[], int *buff_ind);
+int print_percent(va_list types, char buffer[], int *buff_ind);
 
 
 
@@ -37,7 +37,7 @@ int handle_wchar(char c, char buffer[]);
 
 
 /** HABDLE PRINT **/
-int handle_print(const char *format, int *index, va_list list, char buffer[]);
+int handle_print(const char *format, int *index, va_list list, char buffer[], int *buff_ind);
 
 
 #endif

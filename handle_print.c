@@ -7,7 +7,7 @@
  * @buffer: buffer
  * Return: number of byetes writen
  */
-int handle_print(const char *format, int *index, va_list list, char buffer[])
+int handle_print(const char *format, int *index, va_list list, char buffer[], int *buff_ind)
 {
 	int len_unknow = 0, i;
 	int printed_chars = -1;
@@ -18,7 +18,7 @@ int handle_print(const char *format, int *index, va_list list, char buffer[])
 
 	for (i = 0; fmt_types[i].format != '\0'; i++)
 		if (format[*index] == fmt_types[i].format)
-			return (fmt_types[i].ptr(list, buffer));
+			return (fmt_types[i].ptr(list, buffer, buff_ind));
 	if (fmt_types[i].format == '\0')
 	{
 		if (format[*index] == '\0')
