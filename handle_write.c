@@ -32,5 +32,6 @@ int write_number(int is_negative, int ind, char buffer[])
 int write_num(int ind, char buffer[], int length)
 {
 
+
 	return(write(1, &buffer[ind], length));
 }
