@@ -15,12 +15,11 @@ int handle_wchar(char c)
 	return (write(1, &buffer[0], 1));
 }
 
-int write_number(int is_negative, int ind, char buffer[])
-{
-	int length = BUFF_SIZE - ind - 1;
+int write_number(int is_negative, int *ind, char buffer[])
+{	
 	
 	UNUSED(is_negative);
-	return (write_num(ind, buffer, length));
+	return (write_num(ind, buffer));
 }
 /**
  * write_num - write number 
@@ -29,9 +28,9 @@ int write_number(int is_negative, int ind, char buffer[])
  * @length: length to read from the buffer
  * Return: number of the string writen
  */
-int write_num(int ind, char buffer[], int length)
+int write_num(int *ind, char buffer[])
 {
 
-
-	return(write(1, &buffer[ind], length));
+	print_buffer(buffer, ind);
+	return(1);
 }

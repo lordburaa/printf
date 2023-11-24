@@ -11,6 +11,11 @@
 
 #define BUFF_SIZE 1024
 #define UNUSED(x) (void)(x)
+
+/** SIZE **/
+
+#define S_LONG 2
+#define S_SHORT 1
 /********** STRUTRE *******/
 
 typedef struct {
@@ -33,8 +38,8 @@ int print_int(va_list types, char buffer[], int *buff_ind);
 
 /****************WRITE HANDLE ******************/
 int handle_wchar(char c);
-int write_number(int is_negative, int ind, char buffer[]);
-int write_num(int ind, char buffer[], int length);
+int write_number(int is_negative, int *ind, char buffer[]);
+int write_num(int *ind, char buffer[]);
 
 
 /** HABDLE PRINT **/
