@@ -55,15 +55,16 @@ int print_int(va_list types, char buffer[], int *buff_ind)
 {
 	int is_negative = 0;
 	int n = va_arg(types, int);
-	unsigned long int num;
+	unsigned int num;
 	int k = 0;
 	char buf[15];
 
-	num = (unsigned long int)n;
+	num = (unsigned int)n;
 	if (n < 0)
 	{
 		num = (unsigned int)((-1) * n);
-		is_negative = 1;
+		buffer[(*buff_ind)] = '-';
+		++(*buff_ind);
 	}
 	while (num > 0)
 	{
