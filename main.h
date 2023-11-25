@@ -36,10 +36,15 @@ int print_percent(va_list types, char buffer[], int *buff_ind);
 int print_int(va_list types, char buffer[], int *buff_ind);
 
 
+
+/**** LOW LEVEL ***/
+int print_binary(va_list types, char buffer[], int *ind);
+
+
 /****************WRITE HANDLE ******************/
 int handle_wchar(char c);
-int write_number(int is_negative, int *ind, char buffer[]);
-int write_num(int *ind, char buffer[]);
+int write_number(int is_negative, int *ind, char buffer[], int length);
+int write_num(int *ind, char buffer[], int length);
 
 
 /** HABDLE PRINT **/

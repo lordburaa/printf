@@ -53,32 +53,52 @@ int print_percent(va_list types, char buffer[], int *buff_ind)
  */
 int print_int(va_list types, char buffer[], int *buff_ind)
 {
+	int i = BUFF_SIZE - 2;
 	int is_negative = 0;
 	int n = va_arg(types, int);
 	unsigned int num;
 	int k = 0;
-	char buf[15];
+	UNUSED(buff_ind);
 
 	num = (unsigned int)n;
 	if (n < 0)
 	{
 		num = (unsigned int)((-1) * n);
-		buffer[(*buff_ind)] = '-';
-		++(*buff_ind);
+		is_negative = 1;
 	}
 	while (num > 0)
 	{
-		buf[k++] = (num % 10) + '0';
+		buffer[i--] = (num % 10) + '0';
 		num /= 10;
 	}
-	buf[k] = '\0';
-	k--;
-	while (k >= 0)
+	return (write_number(is_negative, &i, buffer, k));
+}
+
+int print_binary(va_list types, char buffer[], int *ind)
+{
+	unsigned int n, m, sum;
+	unsigned int a[32];
+	int count, i;
+	
+
+	
+	n = va_arg(types, unsigned int);
+	m = 2147483648;
+	a[0] = n / m;
+	for (i = 1; i < 32; i++)
 	{
-		buffer[(*buff_ind)] = buf[k];
-		k--;
-		++(*buff_ind);
+		m /= 2;
+		a[i] = (n / m) % 2;
 	}
-	buffer[(*buff_ind)] = '\0';
-	return (write_number(is_negative, buff_ind, buffer));
+	for (i = 0, sum = 0, count = 0; i < 32; i++)
+	{
+		sum += a[i];
+		if (sum)
+		{
+			buffer[(*ind)] = a[i] + '0';
+			++(*ind);
+			count++;
+		}
+	}
+	return (count);
 }

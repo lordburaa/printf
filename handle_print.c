@@ -17,7 +17,8 @@ int handle_print(const char *format, int *index, va_list list,
 	format_t fmt_types[] = {
 		{'c', print_char}, {'s', print_string},
 		{'%', print_percent},
-		{'d', print_int}, {'i', print_int}, {'\0', NULL}};
+		{'d', print_int}, {'i', print_int},
+		{'b', print_binary}, {'\0', NULL}};
 
 	for (i = 0; fmt_types[i].format != '\0'; i++)
 		if (format[*index] == fmt_types[i].format)
