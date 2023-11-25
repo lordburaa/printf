@@ -93,8 +93,10 @@ int print_binary(va_list types, char buffer[], int *ind)
 	for (i = 0, sum = 0, count = 0; i < 32; i++)
 	{
 		sum += a[i];
+		buffer[(*ind)] = '0' + 0;
 		if (sum)
 		{
+			++(*ind);
 			buffer[(*ind)] = a[i] + '0';
 			++(*ind);
 			count++;
