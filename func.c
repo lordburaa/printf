@@ -98,7 +98,6 @@ int print_binary(va_list types, char buffer[], int *ind)
 		{
 			++(*ind);
 			buffer[(*ind)] = a[i] + '0';
-			++(*ind);
 			count++;
 		}
 	}
